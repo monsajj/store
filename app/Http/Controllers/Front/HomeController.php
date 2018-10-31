@@ -39,7 +39,7 @@ class HomeController extends Controller
      */
     public function __construct(Category $category, Product $product, User $user, Image $image)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
 
         $this->category = $category;
         $this->image = $image;

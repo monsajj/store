@@ -23,6 +23,19 @@ class CategoryController extends Controller
         $this->category = $category;
     }
 
+
+//    public function getCategory(string $slug)
+//    {
+//        $categories = $this->category->with(['products','images'])->get();
+//        $parentCategories = $categories->where('parent_id', null);
+//        $category = $categories->where('slug', $slug)->first();
+//
+//        return view('front.categories.category', [
+//            'categories' => $parentCategories,
+//            'category' => $category
+//        ]);
+//    }
+
     /**
      * Find the category via the slug
      *
@@ -30,12 +43,11 @@ class CategoryController extends Controller
      *
      * @return Category
      */
-    public function getCategory(string $slug)
+    public function show($slug)
     {
         $categories = $this->category->with(['products','images'])->get();
         $parentCategories = $categories->where('parent_id', null);
         $category = $categories->where('slug', $slug)->first();
-
         return view('front.categories.category', [
             'categories' => $parentCategories,
             'category' => $category

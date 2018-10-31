@@ -12,7 +12,7 @@
             <section class="new-product t100 home">
                 <h2 class="text-center">{{ $category->name }}</h2>
                 @foreach($category->images as $image)
-                    <img src="{{ asset($image->src) }}" width="400" alt="">
+                    <img src="{{ asset("storage/$image->src") }}" width="400" alt="">
                 @endforeach
                 @foreach($category->subCategories as $subCategory)
                     <div class="section-title b50">
@@ -20,13 +20,13 @@
                     </div>
                     @if ($subCategory->images->count() > 0)
                         @foreach($subCategory->images as $image)
-                            <img src="{{ $image->src }}" alt="" class="img-responsive">
+                            <img src="{{ asset("storage/$image->src") }}" alt="" class="img-responsive">
                         @endforeach
                     @else
                         <img src="https://placehold.it/400x200" alt="placeholder image" class="img-responsive" />
                     @endif
                     <div id="browse-all-btn">
-                        <a class="btn btn-default browse-all-btn" href="{{ route('front.category.slug', $subCategory->slug) }}"
+                        <a class="btn btn-default browse-all-btn" href="{{ route('category.show', $subCategory->slug) }}"
                            role="button">browse all items
                         </a>
                     </div>

@@ -9,7 +9,7 @@
                         @if(request()->segment(2) == $category->slug)
                                 class="active"
                         @endif
-                        href="{{route('front.category.slug', $category->slug)}}">
+                        href="{{route('category.show', $category->slug)}}">
                         {{$category->name}}
                 </a>
             {{--@endif--}}

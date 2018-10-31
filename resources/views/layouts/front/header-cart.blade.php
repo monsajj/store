@@ -10,7 +10,7 @@
             <li class="visible-xs"><a href="#{{--{{ route('register') }}--}}"> <i class="fa fa-sign-in"></i> Register</a></li>
         @endif
         <li id="cart" class="menubar-cart visible-xs">
-            <a href="{{ route('cart.index') }}" title="View Cart" class="awemenu-icon menu-shopping-cart">
+            <a href="{{ route('cart.show') }}" title="View Cart" class="awemenu-icon menu-shopping-cart">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span class="cart-number">{{ $cartCount ?? 0}}</span>
             </a>

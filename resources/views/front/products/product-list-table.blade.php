@@ -41,7 +41,7 @@
         @foreach($cartItems as $cartItem)
             <tr>
                 <td>
-                    {{--<a href="{{ route('front.get.product', [$cartItem->product->slug]) }}" class="hover-border">--}}
+                    {{--<a href="{{ route('product.show', [$cartItem->product->slug]) }}" class="hover-border">--}}
                         {{--@if(isset($cartItem->cover))--}}
                             {{--<img src="{{$cartItem->cover}}" alt="{{ $cartItem->name }}" class="img-responsive img-thumbnail">--}}
                         {{--@else--}}
