@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CategorySeeder extends Seeder
 {
@@ -15,27 +16,51 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'parent_id' => null,
-                'name' => 'Category 1',
-                'slug' => 'category-1',
-                'description' => 'Category 1 Description',
+                'name' => 'laptops',
+                'slug' => 'laptops',
+                'description' => 'laptops description laptops description laptops description laptops description laptops description laptops description laptops description laptops description',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
                 'parent_id' => null,
-                'name' => 'Category 2',
-                'slug' => 'category-2',
-                'description' => 'Category 2 Description',
+                'name' => 'gamer-laptops',
+                'slug' => 'gamer-laptops',
+                'description' => 'gamer-laptops description gamer-laptops description gamer-laptops description gamer-laptops description gamer-laptops description gamer-laptops description ',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'parent_id' => 1,
-                'name' => 'Category 1 Child 1',
-                'slug' => 'category-1-child-1',
-                'description' => 'Category 1 Child 1 Description',
+                'parent_id' => null,
+                'name' => 'work-laptops',
+                'slug' => 'work-laptops',
+                'description' => 'work-laptops description work-laptops description work-laptops description work-laptops description work-laptops description work-laptops description',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'parent_id' => 1,
-                'name' => 'Category 1 Child 2',
-                'slug' => 'category-1-child-2',
-                'description' => 'Category 1 Child 2 Description',
+                'parent_id' => null,
+                'name' => 'monitors',
+                'slug' => 'monitors',
+                'description' => 'monitors description monitors description monitors description monitors description monitors description monitors description monitors description monitors description',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'parent_id' => null,
+                'name' => 'tablets',
+                'slug' => 'tablets',
+                'description' => 'tablets description tablets description tablets description tablets description tablets description tablets description tablets description tablets description',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'parent_id' => null,
+                'name' => 'ebook-readers',
+                'slug' => 'ebook-readers',
+                'description' => 'ebook-readers description ebook-readers description ebook-readers description ebook-readers description ebook-readers description ebook-readers description ',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]
         ]);
     }
