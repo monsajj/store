@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Shop\Categories\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Shop\Carts\RequestRules\AddToCartRequest;
@@ -23,21 +22,14 @@ class CartController extends Controller
     private $product;
 
     /**
-     * @var Category
-     */
-    private $categories;
-
-    /**
      * CartController constructor.
      * @param Cart $cart
      * @param Product $product
-     * @param Category $category
      */
-    public function __construct(Cart $cart, Product $product, Category $category)
+    public function __construct(Cart $cart, Product $product)
     {
         $this->cart = $cart;
         $this->product = $product;
-        $this->categories = $category;
     }
 
     /**
