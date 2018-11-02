@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="container cart">
+    <div class="breadcrumb">
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-center">
@@ -20,11 +20,11 @@
                         <thead class="thead-dark">
                         <tr>
                             <th>#</th>
-                            <th>{{__('cart.Name')}}</th>
-                            <th>{{__('cart.Quantity')}}</th>
-                            <th>{{__('cart.Price')}}</th>
-                            <th>{{__('cart.Total by product')}}</th>
-                            <th>{{__('cart.Delete')}}</th>
+                            <th>{{__('Название')}}</th>
+                            <th>{{__('Количество')}}</th>
+                            <th>{{__('Цена(шт.)')}}</th>
+                            <th>{{__('Цена(итого)')}}</th>
+                            <th>{{__('Удалить')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,12 +46,12 @@
                                 </tr>
                             @endforeach
                             <tr>
-                                <td >{{__('cart.Total in cart')}}</td>
+                                <td >{{__('Итого')}}</td>
                                 <td colspan="5">$ {{ number_format($sum, 2, ',', '.')  }}</td>
                             </tr>
                         @else
                             <tr>
-                                <td colspan="5">{{__('cart.Cart is empty')}}</td>
+                                <td colspan="5">{{__('Корзина пуста')}}</td>
                             </tr>
                         @endif
                         </tbody>

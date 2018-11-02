@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Shop\Products\Product;
 use App\Http\Controllers\Controller;
-use App\Shop\Categories\Category;
 
 class ProductController extends Controller
 {
@@ -15,18 +14,12 @@ class ProductController extends Controller
     private $product;
 
     /**
-     * @var Category
-     */
-    private $categories;
-
-    /**
      * ProductController constructor.
      * @param Product $product
      */
-    public function __construct(Product $product, Category $categories)
+    public function __construct(Product $product)
     {
         $this->product = $product;
-        $this->categories = $categories;
     }
 
     /**
@@ -38,15 +31,10 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        $product = $this->product->with(['category','images'])->where('slug', $slug)->first();
-        $category = $product->category()->first();
-        $categories = $this->categories->parent()->get();
-
+        $product = $this->product->with(['category','images'])->bySlug($slug)->first();
 
         return view('front.products.product', [
-            'product' => $product,
-            'category' => $category,
-            'categories' => $categories
+            'product' => $product
         ]);
     }
 }

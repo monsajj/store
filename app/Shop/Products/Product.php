@@ -43,6 +43,11 @@ class Product extends Model
         return $query->where('status', true);
     }
 
+    public function scopeBySlug(Builder $query, $slug)
+    {
+        return $query->where('slug', $slug);
+    }
+
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');

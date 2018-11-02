@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'parent_id' => null,
-                'name' => 'laptops',
+                'name' => 'Ноутбуки',
                 'slug' => 'laptops',
                 'description' => 'laptops description laptops description laptops description laptops description laptops description laptops description laptops description laptops description',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -24,7 +24,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'parent_id' => null,
-                'name' => 'gamer-laptops',
+                'name' => 'Игровые Ноутбуки',
                 'slug' => 'gamer-laptops',
                 'description' => 'gamer-laptops description gamer-laptops description gamer-laptops description gamer-laptops description gamer-laptops description gamer-laptops description ',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -32,7 +32,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'parent_id' => null,
-                'name' => 'work-laptops',
+                'name' => 'Ноутбуки для Офиса',
                 'slug' => 'work-laptops',
                 'description' => 'work-laptops description work-laptops description work-laptops description work-laptops description work-laptops description work-laptops description',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -40,7 +40,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'parent_id' => null,
-                'name' => 'monitors',
+                'name' => 'Мониторы',
                 'slug' => 'monitors',
                 'description' => 'monitors description monitors description monitors description monitors description monitors description monitors description monitors description monitors description',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -48,7 +48,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'parent_id' => null,
-                'name' => 'tablets',
+                'name' => 'Планшеты',
                 'slug' => 'tablets',
                 'description' => 'tablets description tablets description tablets description tablets description tablets description tablets description tablets description tablets description',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -56,7 +56,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'parent_id' => null,
-                'name' => 'ebook-readers',
+                'name' => 'Электронные Книги',
                 'slug' => 'ebook-readers',
                 'description' => 'ebook-readers description ebook-readers description ebook-readers description ebook-readers description ebook-readers description ebook-readers description ',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

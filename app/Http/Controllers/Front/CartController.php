@@ -31,6 +31,7 @@ class CartController extends Controller
      * CartController constructor.
      * @param Cart $cart
      * @param Product $product
+     * @param Category $category
      */
     public function __construct(Cart $cart, Product $product, Category $category)
     {
@@ -59,9 +60,7 @@ class CartController extends Controller
         $cart = $this->cart->getCartDataForView();
         $sum = $this->cart->getCartTotalSum();
 
-        $categories = $this->categories->parent()->get();
-
-        return view('front.carts.cart', compact('cart', 'sum', 'categories'));
+        return view('front.carts.cart', compact('cart', 'sum'));
     }
 
     /**

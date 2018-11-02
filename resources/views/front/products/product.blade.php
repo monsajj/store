@@ -18,10 +18,10 @@
             <div class="col-md-12">
                 <ol class="breadcrumb">
                     <li><a href="{{ route('home') }}"> <i class="fa fa-home"></i> Home</a></li>
-                    @if(isset($category))
-                    <li><a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a></li>
+                    @if(isset($product->category))
+                    <li><a href="{{ route('category.show', $product->category->slug) }}">{{ $product->category->name }}</a></li>
                     @endif
-                    <li class="active">Product</li>
+                    <li class="active">{{ $product->name }}</li>
                 </ol>
             </div>
         </div>
