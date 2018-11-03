@@ -28,10 +28,15 @@ Route::namespace('Front')->group(function () {
     Route::resource('category', 'CategoryController');
     Route::resource('product', 'ProductController');
 
+//    Route::get('/product/{product}', 'ProductController@show')->name('product.show');
+
     Route::get('/cart', 'CartController@index')->name('cart.index');
     Route::get('/cart', 'CartController@show')->name('cart.show')->middleware('empty.cart');
 
     Route::post('/cart', 'CartController@store')->name('cart.store');
     Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');
     Route::get('/cart/delete/{id}', 'CartController@delete')->name('cart.delete');
+
+    Route::post('/comment', 'CommentController@store')->name('comment.store');
+
 });

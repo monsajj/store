@@ -2,11 +2,13 @@
 
 namespace App\Shop\Products;
 
+use App\Shop\Comments\Comment;
 use Illuminate\Database\Eloquent\Model;
 use App\Shop\Categories\Category;
 use App\Shop\Images\Image;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -31,6 +33,14 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     /**

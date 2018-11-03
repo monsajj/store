@@ -31,10 +31,11 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        $product = $this->product->with(['category','images'])->bySlug($slug)->first();
 
+        $product = $this->product->with(['category','images','comments'])->bySlug($slug)->first();
         return view('front.products.product', [
-            'product' => $product
+            'product' => $product,
+            'comments' => $product->comments
         ]);
     }
 }
