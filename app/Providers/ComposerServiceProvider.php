@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use View;
 use App\Http\ViewComposers\CartComposer;
 use App\Http\ViewComposers\CategoriesComposer;
-
+use App\Http\ViewComposers\LocalesComposer;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -29,7 +29,9 @@ class ComposerServiceProvider extends ServiceProvider
             'layouts.front.app',
             CartComposer::class);
 
-
+        View::composer(
+            'layouts.front.app',
+            LocalesComposer::class);
     }
 
     /**

@@ -9,7 +9,7 @@
             <div class="col-md-5">
                 <h2>Login to your account</h2>
                 <form action="{{ route('cart.login') }}" method="post" class="form-horizontal">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="form-group">
                         <label for="email" class="control-label">Email</label>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email" autofocus>
@@ -29,7 +29,7 @@
             <div class="col-md-6 col-md-offset-1">
                 <h2>Register an account</h2>
                 <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                    {{ csrf_field() }}
+                    @csrf
                     <div class="form-group">
                         <label for="name" class="control-label">Name</label>
                         <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>

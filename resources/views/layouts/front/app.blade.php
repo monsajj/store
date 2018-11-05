@@ -28,11 +28,13 @@
             <div class="pull-right">
                 <ul class="nav navbar-nav navbar-right">
                     @if(auth()->check())
-                        <li><a href="#{{--{{ route('accounts', ['tab' => 'profile']) }}--}}"><i class="fa fa-home"></i> My Account</a></li>
-                        <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        <li><a href="#{{--{{ route('accounts', ['tab' => 'profile']) }}--}}"><i class="fa fa-home"></i>
+                                My Account</a></li>
+                        <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> {{ __('Logout') }}</a></li>
                     @else
-                        <li><a href="{{ route('login') }}"> <i class="fa fa-lock"></i> Login</a></li>
-                        <li><a href="{{ route('register') }}"> <i class="fa fa-sign-in"></i> Register</a></li>
+                        <li><a href="{{ route('login') }}"> <i class="fa fa-lock"></i> {{ __('header.Login') }}</a></li>
+                        <li><a href="{{ route('register') }}"> <i class="fa fa-sign-in"></i> {{ __('header.Register') }}
+                            </a></li>
                     @endif
                     <li id="cart" class="menubar-cart">
                         <a href="{{ route('cart.show') }}" title="View Cart" class="awemenu-icon menu-shopping-cart">
@@ -40,6 +42,21 @@
                             <span class="cart-number">{{ $cartCount ?? 0 }}</span>
                         </a>
                     </li>
+                        <li>
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="" role="button" id="dropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{__('header.Languages')}}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @foreach($locales  as $locale)
+                                        <a class="dropdown-item"
+                                           href="{{route('set.locale', ['locale' =>$locale])}}">{{$locale}}</a>
+                                        <br>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </li>
                 </ul>
             </div>
         </div>

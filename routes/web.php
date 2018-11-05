@@ -25,6 +25,7 @@ Auth::routes();
 
 Route::namespace('Front')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/locale/{locale}', 'HomeController@setLocale')->name('set.locale');
     Route::resource('category', 'CategoryController');
     Route::resource('product', 'ProductController');
 

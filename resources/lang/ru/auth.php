@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'Login' => 'Login',
-    'E-Mail Address' => 'Login',
-    'Password' => 'Password',
-    'Remember Me' => 'Remember Me',
-    'lol' => 'enlol',
+    'failed' => 'Нет пользователя с такими учетными данными.',
+    'throttle' => 'Слишком много попыток входа. Пожалуйста, повторите попытку через :seconds секунд.',
+    'Login' => 'Логин',
+    'E-Mail Address' => 'Почтовый адрес',
+    'Password' => 'Пароль',
+    'Remember Me' => 'Запомнить меня',
+    'lol' => 'rulol',
 ];

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Shop\Categories\Category;
+use App;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -35,5 +37,12 @@ class HomeController extends Controller
         return view('front.index', [
             'categories' => $categories
         ]);
+    }
+
+    public function setLocale(string $locale)
+    {
+        Session::put('locale', $locale);
+
+        return redirect()->back();
     }
 }
