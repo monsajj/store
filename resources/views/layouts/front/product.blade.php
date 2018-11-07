@@ -114,7 +114,7 @@
                                 @else
                                     {{ ucwords($comment->user_name) }}
                                 @endif
-                                <small>{{ $comment->email }}</small>
+
                             </h3>
                             @if($comment->parent_id === null)
                                 <small>parent_id is null</small>
@@ -184,7 +184,7 @@
                                                 @else
                                                     {{ ucwords($subComment->user_name) }}
                                                 @endif
-                                                <small>{{ $subComment->email }}</small>
+
                                             </h3>
                                             @if($subComment->parent_id === null)
                                                 <small>parent_id is null</small>
