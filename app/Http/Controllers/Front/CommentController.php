@@ -30,7 +30,10 @@ class CommentController extends Controller
         $this->comment->user_name = $request->get('user_name');
         $this->comment->email = $request->get('email');
         $this->comment->text = $request->get('text');
+        $this->comment->parent_id = $request->get('parent_id');
         $this->comment->save();
         return redirect()->route('product.show', ['product' => $request->get('product_slug')]);
     }
+
+
 }

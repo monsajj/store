@@ -93,7 +93,7 @@
     </div>
 </div>
 @if(isset($comments))
-    <div>
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>
@@ -106,19 +106,152 @@
                 @endif
                 <div class="product-description">
                     @foreach($comments as $comment)
-                        <h3>
-                            @if($comment->email !== null)
-                                <a href="mailto:{{ ucwords($comment->email) }}">{{ ucwords($comment->user_name) }}</a></p>
+                        <div>
+                            <h3>
+                                @if($comment->email !== null)
+                                    <a href="mailto:{{ ucwords($comment->email) }}">{{ ucwords($comment->user_name) }}</a>
 
-                            @else
-                                {{ ucwords($comment->user_name) }}
+                                @else
+                                    {{ ucwords($comment->user_name) }}
+                                @endif
+                                <small>{{ $comment->email }}</small>
+                            </h3>
+                            @if($comment->parent_id === null)
+                                <small>parent_id is null</small>
                             @endif
-                            <small>{{ $comment->email }}</small>
-                        </h3>
-                        <div class="description">{!! $comment->text !!}</div>
-                        <div class="excerpt">
-                            <hr>{!!  str_limit($comment->text, 100, ' ...') !!}</div>
-                        <hr>
+                            <div class="description">{!! $comment->text !!}</div>
+                            <div class="excerpt">
+                                <hr>{!!  str_limit($comment->text, 100, ' ...') !!}</div>
+                            <hr>
+
+
+                            {{----------------------------------------------------------------------------------------------------------------------------------------------}}
+
+                            <div class="col-md-12">
+                                <p>
+                                    Добавить Комментарий Комментария
+                                </p>
+
+                                @include('layouts.errors-and-messages')
+                                <form action="{{ route('comment.store') }}" class="form-inline" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        @unless(Auth::check())
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="user_name"
+                                                   id="user_name"
+                                                   placeholder="Your Name"
+                                                   value="{{ old('user_name') }}"/>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="email"
+                                                   id="email"
+                                                   placeholder="Your Email"/>
+                                        @else
+                                            <input type="hidden" name="user_name" value="{{ Auth::user()->name }}"/>
+                                            <input type="hidden" name="email" value="{{ Auth::user()->email }}"/>
+                                        @endunless
+                                        <input type="text"
+                                               class="form-control"
+                                               name="text"
+                                               id="text"
+                                               placeholder="Your Comment"
+                                               value="{{ old('text') }}"/>
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+                                        <input type="hidden" name="product_slug" value="{{ $product->slug }}"/>
+                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning"><i class="fa fa-cart-plus"></i> Add comment
+                                    </button>
+                                </form>
+                            </div>
+                            {{----------------------------------------------------------------------------------------------------------------------------------------------}}
+
+
+                            @if($comment->subComments->count() !== 0)
+
+
+
+
+                                <div class="product-description" style="left: 150px">
+                                    @foreach($comment->subComments as $subComment)
+                                        <div>
+                                            <h3>
+                                                @if($subComment->email !== null)
+                                                    <a href="mailto:{{ ucwords($subComment->email) }}">{{ ucwords($subComment->user_name) }}</a>
+
+                                                @else
+                                                    {{ ucwords($subComment->user_name) }}
+                                                @endif
+                                                <small>{{ $subComment->email }}</small>
+                                            </h3>
+                                            @if($subComment->parent_id === null)
+                                                <small>parent_id is null</small>
+                                            @endif
+                                            <div class="description">{!! $subComment->text !!}</div>
+                                            <div class="excerpt">
+                                                <hr>{!!  str_limit($subComment->text, 100, ' ...') !!}</div>
+                                            <hr>
+
+                                            {{----------------------------------------------------------------------------------------------------------------------------------------------}}
+
+                                            <div class="col-md-12">
+                                                <p>
+                                                    Добавить Комментарий Комментария Комментария
+                                                </p>
+
+                                                @include('layouts.errors-and-messages')
+                                                <form action="{{ route('comment.store') }}" class="form-inline" method="post">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        @unless(Auth::check())
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   name="user_name"
+                                                                   id="user_name"
+                                                                   placeholder="Your Name"
+                                                                   value="{{ old('user_name') }}"/>
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   name="email"
+                                                                   id="email"
+                                                                   placeholder="Your Email"/>
+                                                        @else
+                                                            <input type="hidden" name="user_name" value="{{ Auth::user()->name }}"/>
+                                                            <input type="hidden" name="email" value="{{ Auth::user()->email }}"/>
+                                                        @endunless
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               name="text"
+                                                               id="text"
+                                                               placeholder="Your Comment"
+                                                               value="{{ old('text') }}"/>
+                                                        <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+                                                        <input type="hidden" name="product_slug" value="{{ $product->slug }}"/>
+                                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}"/>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-warning"><i class="fa fa-cart-plus"></i> Add comment
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            {{----------------------------------------------------------------------------------------------------------------------------------------------}}
+
+
+                                        </div>
+                                    @endforeach
+                                </div>
+
+
+
+
+
+
+                            @endif
+
+
+
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -137,7 +270,8 @@
                                class="form-control"
                                name="user_name"
                                id="user_name"
-                               placeholder="Your Name"/>
+                               placeholder="Your Name"
+                               value="{{ old('user_name') }}"/>
                         <input type="text"
                                class="form-control"
                                name="email"
@@ -151,9 +285,11 @@
                                class="form-control"
                                name="text"
                                id="text"
-                               placeholder="Your Comment"/>
+                               placeholder="Your Comment"
+                               value="{{ old('text') }}"/>
                         <input type="hidden" name="product_id" value="{{ $product->id }}"/>
-                        <input type="hidden" name="product_slug" value="{{ $product->slug }}"/>
+                            <input type="hidden" name="product_slug" value="{{ $product->slug }}"/>
+                            <input type="hidden" name="parent_id" value=""/>
                     </div>
                     <button type="submit" class="btn btn-warning"><i class="fa fa-cart-plus"></i> Add comment
                     </button>

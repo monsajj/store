@@ -6,6 +6,7 @@ use App\Shop\Products\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comment extends Model
 {
@@ -18,8 +19,17 @@ class Comment extends Model
         'product_id',
         'user_name',
         'user_email',
-        'text'
+        'text',
+        'parent_id'
     ];
+
+    /**
+     * @return HasMany
+     */
+    public function subComments()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
 
     /**
      * @return BelongsTo

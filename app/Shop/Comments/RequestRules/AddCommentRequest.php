@@ -21,7 +21,7 @@ class AddCommentRequest extends FormRequest
     {
         return [
             'user_name' => ['required', 'string'],
-            'email' => ['sometimes', 'email'],
+            'email' => ['nullable','email'],
             'text' => ['required'],
             'product_id' => ['required']
         ];
