@@ -27,6 +27,20 @@
             <div class="clearfix"></div>
             <div class="pull-right">
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                                <form action="{{ route('search.search') }}" class="form-inline" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               name="search"
+                                               id="search"
+                                               placeholder="Search"/>
+                                    </div>
+                                    <button type="submit" class="btn"><i class="fa fa-search"></i> Search
+                                    </button>
+                                </form>
+                    </li>
                     @if(auth()->check())
                         <li><a href="#{{--{{ route('accounts', ['tab' => 'profile']) }}--}}"><i class="fa fa-home"></i>
                                 My Account</a></li>

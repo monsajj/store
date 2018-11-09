@@ -31,8 +31,11 @@ Route::namespace('Front')->group(function () {
 
 //    Route::get('/product/{product}', 'ProductController@show')->name('product.show');
 
+    Route::post('/search', 'SearchController@search')->name('search.search');
+
     Route::get('/cart', 'CartController@index')->name('cart.index');
-    Route::get('/cart', 'CartController@show')->name('cart.show')->middleware('empty.cart');
+    Route::get('/cart', 'CartController@show')->name('cart.show');
+//    Route::get('/cart', 'CartController@show')->name('cart.show')->middleware('empty.cart');
 
     Route::post('/cart', 'CartController@store')->name('cart.store');
     Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');
