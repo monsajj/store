@@ -33,9 +33,10 @@ class SearchController extends Controller
      */
     public function search(Request $request, CategoryCollector $categoryCollector)
     {
-        $categories = $categoryCollector->collect($request->search);
         echo ($request->search);
         dump($this->searcher->search($request->search));
+
+        $categories = $categoryCollector->collect($request->search);
         dd($categories->toArray());
     }
 }

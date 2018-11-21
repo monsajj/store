@@ -52,8 +52,9 @@ class CategoryCollector
      */
     public function collect($param)
     {
-//        $products = $this->getProducts($param);
-////        dd($products);
+        $products = $this->getProducts($param);
+        return $products;
+//        dd($products);
 //        try {
 //            $filter = $this->getFilter();
 //            return $filter->filter($products);
@@ -61,13 +62,13 @@ class CategoryCollector
 //            return $products;
 //        }
 
-        $categories = $this->getCategories();
-        try {
-            $filter = $this->getFilter();
-            return $filter->filter($categories);
-        } catch (FilterBuildingException $exception) {
-            return $categories;
-        }
+//        $categories = $this->getCategories();
+//        try {
+//            $filter = $this->getFilter();
+//            return $filter->filter($categories);
+//        } catch (FilterBuildingException $exception) {
+//            return $categories;
+//        }
     }
 
     /**
@@ -93,9 +94,17 @@ class CategoryCollector
      */
     private function getProducts($param)
     {
-        return $this->product->where([
-            ['name', 'LIKE', '%' . $param . '%']
-        ])->get();
+
+        $products = $this->product->all();
+        $productsSortedByPrice = $products->sortBy('price');
+        $productsSortedByPriceAndGroupByCategory = $productsSortedByPrice->groupBy('category_id')->all();
+        ksort($productsSortedByPriceAndGroupByCategory);
+        $productsCollect = collect($productsSortedByPriceAndGroupByCategory);
+        $productsCollectCollapse = $productsCollect->collapse();
+        return $productsCollectCollapse;
+//        return $this->product->where([
+//            ['name', 'LIKE', '%' . $param . '%']
+//        ])->get();
     }
 
     private function sortByCategoryName(Collection $collection)
